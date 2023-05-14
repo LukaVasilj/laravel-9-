@@ -16,7 +16,10 @@ class CityController extends Controller
 
     public function create()
     {
-        return view('city.create');
+        $cities = City::with('country')->get();
+        $country = Country::with('cities')->get();
+
+        return view('city.create', compact('cities','country'));
     }
 
     public function store(Request $request)
@@ -35,7 +38,9 @@ class CityController extends Controller
     public function edit($id)
     {
         $city = City::find($id);
-        return view('city.edit')->with('city', $city);
+        $country = Country::with('cities')->get();
+
+        return view('city.edit', compact('city','country'));
     }
 
     public function update(Request $request, $id)

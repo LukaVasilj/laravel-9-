@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="card">
-  <div class="card-header">Contactus Page</div>
+  <div class="card-header">Contact us Page</div>
   <div class="card-body">
 
       <form action="{{ url('city/' .$city->city_id) }}" method="post">
@@ -12,7 +12,12 @@
         <label> Name</label></br>
         <input type="text" name="city" id="city" value="{{$city->city}}" class="form-control"></br>
         <label> Country</label></br>
-        <input type="text" name="country" id="country" value="{{$city->country->country}}" class="form-control"></br>
+        <select name="country_id" id="country_id">
+        @foreach($country as $item)
+            <option value="{{ $item->country_id }}">   {{ $item->country}} </option>
+        @endforeach
+
+        </select>
 
         <input type="submit" value="Update" class="btn btn-success"></br>
     </form>
