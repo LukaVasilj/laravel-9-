@@ -54,6 +54,6 @@ class CityController extends Controller
     public function destroy($id)
     {
         City::destroy($id);
-        return redirect('city')->with('flash_message', 'City deleted!');
+        return response()->json(['message' => 'City deleted']);
     }
 }
